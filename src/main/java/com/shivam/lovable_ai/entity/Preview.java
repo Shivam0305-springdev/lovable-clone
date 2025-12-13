@@ -12,7 +12,9 @@ public class Preview {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private Long projectId;
+    @OneToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
     private String namespace;
     private String podName;
     private String previewUrl;

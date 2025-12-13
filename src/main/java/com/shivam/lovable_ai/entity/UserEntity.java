@@ -13,11 +13,16 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column(unique = true)
     private String email;
+
     private String passwordHash;
     private String name;
     private String avatarUrl;
     private Instant createdAt;
     private Instant updatedAt;
     private Instant deletedAt;
+
+    @OneToOne(mappedBy = "user")
+    private Subscription subscription; // inverse side
 }

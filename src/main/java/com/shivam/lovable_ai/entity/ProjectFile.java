@@ -13,7 +13,10 @@ public class ProjectFile {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private Long projectId;
+    @OneToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
+    @Column(unique = true)
     private String path;
     private String minioObjectKey;
     private Long createdBy;

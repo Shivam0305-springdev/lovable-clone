@@ -13,12 +13,17 @@ public class UsageLog {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
-    private Long userId;
-    private Long projectId;
     private String action;
     private int tokensUsed;
     private int durationMs;
     private String metadata;
     private Instant createdAt;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    @OneToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 }

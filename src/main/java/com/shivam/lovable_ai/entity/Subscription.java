@@ -12,8 +12,7 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String userId;
-    private String planId;
+    @Column(unique = true)
     private String stripeSubscriptionId;
     private String status;
     private Instant currentPeriodStart;
@@ -21,5 +20,13 @@ public class Subscription {
     private boolean cancelAtPeriodEnd;
     private Instant createdAt;
     private Instant updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user; // owning side
+
+    @OneToOne
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
 
 }

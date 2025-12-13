@@ -18,4 +18,7 @@ public class Plan {
     private boolean unlimitedAi;
     private String features;
     private boolean active;
+
+    @OneToOne(mappedBy = "plan")
+    private Subscription subscription;
 }
